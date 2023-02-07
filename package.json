@@ -6,7 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx tsc",
-    "start": "node dist"
+    "start": "node dist",
+    "migrate:create": "npx sh -c 'ts-node node_modules/.bin/migrate-mongo create $0 -f migrate-mongo-config.ts' ",
+    "migrate:status": "npx ts-node node_modules/.bin/migrate-mongo status -f migrate-mongo-config.ts",
+    "migrate:down": "npx ts-node node_modules/.bin/migrate-mongo down -f migrate-mongo-config.ts && npm run migrate:status",
+    "migrate:up": "npx ts-node node_modules/.bin/migrate-mongo up -f migrate-mongo-config.ts"
   },
   "author": "",
   "license": "ISC",
@@ -29,7 +33,11 @@
     "typescript": "^4.9.5"
   },
   "dependencies": {
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "mongoose": "^6.9.1"
+    "migrate-mongo": "^9.0.0",
+    "mongodb": "^5.0.1",
+    "mongoose": "^6.9.1",
+    "ts-node": "^10.9.1"
   }
 }
