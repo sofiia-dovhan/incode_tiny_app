@@ -8,6 +8,9 @@
         DB_USER=your-dbuser
         DB_NAME=your-dbname
         DB_PASS=password
+        JWT_ACCESS_SECRET=77
+        JWT_REFRESH_SECRET=7777
+
         ```
 * run migrations
     ```
