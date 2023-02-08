@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx tsc",
     "start": "node dist",
-    "migrate:create": "npx sh -c 'ts-node node_modules/.bin/migrate-mongo create $0 -f migrate-mongo-config.ts' ",
+    "migrate:create": "sh -c 'npx ts-node node_modules/.bin/migrate-mongo create $0 -f migrate-mongo-config.ts' ",
     "migrate:status": "npx ts-node node_modules/.bin/migrate-mongo status -f migrate-mongo-config.ts",
     "migrate:down": "npx ts-node node_modules/.bin/migrate-mongo down -f migrate-mongo-config.ts && npm run migrate:status",
     "migrate:up": "npx ts-node node_modules/.bin/migrate-mongo up -f migrate-mongo-config.ts"

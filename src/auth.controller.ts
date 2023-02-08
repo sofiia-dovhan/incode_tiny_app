@@ -6,7 +6,7 @@ const authController = express.Router();
 
 authController.post('/registration', async (req, res) => {
   const { email, password } = req.body;
-  const user = await new UserModel({ email, password, role: Role.REGULAR });
+  const user = await new UserModel({ email, password, role: Role.REGULAR }).save();
 
   res.json(user);
 });
