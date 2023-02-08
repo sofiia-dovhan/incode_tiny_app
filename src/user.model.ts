@@ -5,7 +5,7 @@ import { IUser } from './user.interface';
 const userSchema = new Schema<IUser>({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  role: { enum: Object.values(Role), required: true },
+  role: { type: String, enum: Object.values(Role), required: true },
 });
 
-export const User = model<IUser>('User', userSchema);
+export const UserModel = model<IUser>('User', userSchema);

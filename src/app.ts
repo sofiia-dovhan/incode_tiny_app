@@ -4,6 +4,8 @@ import userController from './user.controller';
 
 const app = express();
 
+app.use(express.json());
+
 app.use('/auth', authController);
 
 app.use('/users', userController);
