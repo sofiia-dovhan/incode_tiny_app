@@ -16,5 +16,4 @@ userController.delete('/:userId', (req, res) => {
   res.status(204).end();
 });
 
-
 export default userController;
