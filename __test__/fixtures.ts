@@ -1,5 +1,5 @@
-import { AppReq } from '../src/app-req.type';
-import { Payload } from '../src/payload.type';
+import { AppReq } from '../src/types/app-req.type';
+import { Payload } from '../src/types/payload.type';
 
 export function getMockRequest(options: {
   authHeader?: any,

@@ -1,9 +1,9 @@
 import express, { NextFunction, Request, Response } from 'express';
-import { Payload } from './payload.type';
-import { Role } from './role.enum';
-import { UserModel } from './user.model';
+import { Payload } from '../types/payload.type';
+import { Role } from '../types/role.enum';
+import { UserModel } from '../users/user.model';
 import jwt from 'jsonwebtoken';
-import { getAdminId } from './get-admin-id.util';
+import { getAdminId } from '../utils/get-admin-id.util';
 
 export async function registration(req: Request, res: Response, next: NextFunction) {
   const { email, password, bossId } = req.body;

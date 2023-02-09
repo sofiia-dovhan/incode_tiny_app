@@ -1,4 +1,4 @@
-import { registration } from '../src/auth.controller';
+import { registration } from '../src/auth/auth.controller';
 import { getMockRequest } from './fixtures';
 import { MockUserModel } from './mocks';
 
@@ -12,6 +12,6 @@ describe('Check auth route', () => {
     const actual = await registration(getMockRequest({ body: { 
       email: 'test@gmail.com',
       password: 'qwerty',
-    } }), {} as any);
+    } }), {} as any, {} as any);
   })
 })

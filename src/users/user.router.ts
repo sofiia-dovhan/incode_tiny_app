@@ -1,9 +1,9 @@
 import express, { NextFunction, Response } from 'express';
-import { AppReq } from './app-req.type';
-import { jwtMiddleware } from './jwt-middleware';
+import { AppReq } from '../types/app-req.type';
+import { jwtMiddleware } from '../common/jwt-middleware';
 import { UserModel } from './user.model';
-import { Role } from './role.enum';
-import { IUser } from './user.interface';
+import { Role } from '../types/role.enum';
+import { IUser } from '../types/user.interface';
 
 const userController = express.Router();
 

@@ -1,6 +1,6 @@
 import { Schema, model, connect, Types } from 'mongoose';
-import { Role } from './role.enum';
-import { IUser } from './user.interface';
+import { Role } from '../types/role.enum';
+import { IUser } from '../types/user.interface';
 
 const MODEL_NAME = 'User';
 

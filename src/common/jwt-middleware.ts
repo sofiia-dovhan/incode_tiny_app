@@ -1,7 +1,7 @@
 import { NextFunction, Response } from 'express';
 import jwt from 'jsonwebtoken';
-import { AppReq } from './app-req.type';
-import { Payload } from './payload.type';
+import { AppReq } from '../types/app-req.type';
+import { Payload } from '../types/payload.type';
 
 export async function jwtMiddleware(req: AppReq, res: Response, next: NextFunction) {
   const access = req.headers?.authorization?.split('Bearer ')[1];

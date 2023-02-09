@@ -1,8 +1,8 @@
 import express from 'express';
-import authController from './auth.router';
-import userController from './user.controller';
+import authController from './auth/auth.router';
+import userController from './users/user.router';
 import { config } from 'dotenv';
-import { errorHandler } from './error-handler.middleware';
+import { errorHandler } from './common/error-handler.middleware';
 
 config();
 
