@@ -21,4 +21,8 @@ describe('Check jwt-middleware', () => {
 
     expect(mockReq.user?._id).toBe('mockId');
   });
+
+  it('should throw "Unauthorized" exception', async () => {
+    await expect(jwtMiddleware({} as any, {} as any, {} as any)).rejects.toThrow('Unauthorized');
+  });
 });
