@@ -3,10 +3,31 @@ import { Payload } from './payload.type';
 import { Role } from './role.enum';
 import { UserModel } from './user.model';
 import jwt from 'jsonwebtoken';
+import { getAdminId } from './get-admin-id.util';
 
-export async function registration(req: Request, res: Response) {
-  const { email, password } = req.body;
-  const user = await new UserModel({ email, password, role: Role.REGULAR }).save();
+export async function registration(req: Request, res: Response, next: NextFunction) {
+  const { email, password, bossId } = req.body;
+  let _bossId: string;
+
+  if (!bossId) {
+    _bossId = await getAdminId();
+  } else {
+    const boss = await UserModel.findById(bossId).exec();
+
+    if (!boss) {
+      next(new Error('Boss is not found'));
+
+      return;
+    }
+
+    if (boss.role === Role.REGULAR) {
+      await UserModel.findByIdAndUpdate(bossId, { role: Role.BOSS });
+    }
+
+    _bossId = bossId;
+  }
+
+  const user = await new UserModel({ email, password, role: Role.REGULAR, bossId: _bossId }).save();
 
   res.json(user);
 }
