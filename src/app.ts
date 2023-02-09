@@ -1,6 +1,6 @@
 import express from 'express';
 import authController from './auth/auth.router';
-import userController from './users/user.router';
+import userRouter from './users/user.router';
 import { config } from 'dotenv';
 import { errorHandler } from './common/error-handler.middleware';
 
@@ -12,7 +12,7 @@ app.use(express.json());
 
 app.use('/auth', authController);
 
-app.use('/users', userController);
+app.use('/users', userRouter);
 
 app.use(errorHandler);
 

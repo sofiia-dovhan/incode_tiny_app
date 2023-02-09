@@ -4,11 +4,12 @@ import { jwtMiddleware } from '../common/jwt-middleware';
 import { UserModel } from './user.model';
 import { Role } from '../types/role.enum';
 import { IUser } from '../types/user.interface';
+import { changeBoss } from './user.controller';
 
-const userController = express.Router();
+const userRouter = express.Router();
 
 // TODO define AppReq type globally instead default express request
-userController.get('/', jwtMiddleware as any, (async (req: AppReq, res: Response, next: NextFunction) => {
+userRouter.get('/', jwtMiddleware as any, (async (req: AppReq, res: Response, next: NextFunction) => {
   const userId = req.user._id;
   const user = await UserModel.findById(userId, { password: 0 }).exec();
 
@@ -31,9 +32,6 @@ userController.get('/', jwtMiddleware as any, (async (req: AppReq, res: Response
   res.json(response);
 }) as any); 
 
-userController.put('/:userId', (req, res) => {
-  const { userId } = req.params; 
-  res.json({ toDo: `should update user with ${userId} id` });
-});
+userRouter.patch('/:userId', changeBoss);
 
-export default userController;
+export default userRouter;
