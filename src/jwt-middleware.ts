@@ -8,11 +8,14 @@ export async function jwtMiddleware(req: AppReq, res: Response, next: NextFuncti
 
   if (access) {
     const payload = jwt.verify(access, process.env.JWT_ACCESS_SECRET || 'secret') as Payload;
-    req.user = payload;
 
+    req.user = payload;
     next();
+
     return;
   }
 
-  throw new Error('Unauthorized');
+  next(new Error('Unauthorized'));
+
+  return;
 };

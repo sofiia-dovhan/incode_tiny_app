@@ -1,4 +1,4 @@
-import express, { Request, Response } from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 import { Payload } from './payload.type';
 import { Role } from './role.enum';
 import { UserModel } from './user.model';
@@ -12,12 +12,14 @@ export async function registration(req: Request, res: Response) {
 }
 
 // TODO add expiration times for tokens
-export async function login(req: Request, res: Response) {
+export async function login(req: Request, res: Response, next: NextFunction) {
   const { email, password } = req.body;
-  const user = await UserModel.findOne({ email });
+  const user = await UserModel.findOne({ email }).exec();
 
   if (!user || password !== user.password) {
-    throw new Error('Email or password is incorrect');
+    next(new Error('Email or password is incorrect'));
+
+    return;
   }
 
   const payload: Payload = { _id: user._id };
